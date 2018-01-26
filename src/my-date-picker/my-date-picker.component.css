@@ -1,7 +1,12 @@
+/* -------------------------------------------- */
+/* INPUT -------------------------------------- */
+/* -------------------------------------------- */
+
 .mydp {
     line-height: 1.1;
     display: inline-block;
     position: relative;
+    border: 1px solid #CCC;
 }
 
 .mydp * {
@@ -15,113 +20,8 @@
 
 .mydp,
 .mydp .selectiongroup,
-.mydp .selection,
-.mydp .selector,
-.mydp .headertodaybtn {
+.mydp .selection {
     border-radius: 4px;
-}
-
-.mydp .header {
-    border-radius: 4px 4px 0 0;
-}
-
-.mydp .caltable,
-.mydp .monthtable,
-.mydp .yeartable {
-    border-radius: 0 0 4px 4px;
-}
-
-.mydp .caltable tbody tr:nth-child(6) td:first-child,
-.mydp .monthtable tbody tr:nth-child(4) td:first-child,
-.mydp .yeartable tbody tr:nth-child(7) td:first-child {
-    border-bottom-left-radius: 4px;
-}
-
-.mydp .caltable tbody tr:nth-child(6) td:last-child,
-.mydp .monthtable tbody tr:nth-child(4) td:last-child,
-.mydp .yeartable tbody tr:nth-child(7) td:last-child {
-    border-bottom-right-radius: 4px;
-}
-
-.mydp .btnpicker {
-    border-radius: 0 4px 4px 0;
-}
-
-.mydp .btnleftborderradius {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
-
-.mydp .selector {
-    margin-top: 2px;
-    margin-left: -1px;
-    position: absolute;
-    padding: 0;
-    border: 1px solid #CCC;
-    z-index: 100;
-    animation: selectorfadein 0.1s;
-}
-
-.mydp .selector:focus {
-    border: 1px solid #ADD8E6;
-    outline: none;
-}
-
-@keyframes selectorfadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.mydp .selectorarrow {
-    background: #FAFAFA;
-    margin-top: 12px;
-    padding: 0;
-}
-
-.mydp .selectorarrow:after,
-.mydp .selectorarrow:before {
-    bottom: 100%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-}
-
-.mydp .selectorarrow:after {
-    border-color: rgba(250, 250, 250, 0);
-    border-bottom-color: #FAFAFA;
-    border-width: 10px;
-    margin-left: -10px;
-}
-
-.mydp .selectorarrow:before {
-    border-color: rgba(204, 204, 204, 0);
-    border-bottom-color: #CCC;
-    border-width: 11px;
-    margin-left: -11px;
-}
-
-.mydp .selectorarrow:focus:before {
-    border-bottom-color: #ADD8E6;
-}
-
-.mydp .selectorarrowleft:after,
-.mydp .selectorarrowleft:before {
-    left: 24px;
-}
-
-.mydp .selectorarrowright:after,
-.mydp .selectorarrowright:before {
-    left: 86%;
-}
-
-.mydp .alignselectorright {
-    right: -1px;
 }
 
 .mydp .selectiongroup {
@@ -146,14 +46,6 @@
     color: #555;
 }
 
-.mydp .invaliddate {
-    background-color: #F1DEDE;
-}
-
-.mydp ::-ms-clear {
-    display: none;
-}
-
 .mydp .selbtngroup {
     position: relative;
     vertical-align: middle;
@@ -176,28 +68,61 @@
     -moz-user-select: none;
 }
 
-.mydp .btnleftborder {
-    border-left: 1px solid #CCC;
+.mydp .btnpicker,
+.mydp .btnclear,
+.mydp .btndecrease,
+.mydp .btnincrease {
+    background: #FFF;
+}
+
+.mydp .btnpicker,
+.mydp .btnclear,
+.mydp .btndecrease,
+.mydp .btnincrease {
+    color: #000;
+}
+
+.mydp .btnclear:focus,
+.mydp .btndecrease:focus,
+.mydp .btnincrease:focus,
+.mydp .btnpicker:focus {
+    background: #ADD8E6;
+}
+
+.mydp .btndecrease .icon-mydpleft,
+.mydp .btnincrease .icon-mydpright {
+    font-size: 16px;
+}
+
+.mydp .btnpicker {
+    border-radius: 0 4px 4px 0;
+}
+
+.mydp .btnleftborderradius {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
 }
 
 .mydp .btnpickerenabled,
 .mydp .btnclearenabled,
 .mydp .btndecreaseenabled,
-.mydp .btnincreaseenabled,
-.mydp .headertodaybtnenabled,
-.mydp .headerbtnenabled,
-.mydp .yearchangebtnenabled {
+.mydp .btnincreaseenabled {
     cursor: pointer;
+}
+
+.mydp .invaliddate {
+    background-color: #F1DEDE;
+}
+
+.mydp ::-ms-clear {
+    display: none;
 }
 
 .mydp .selectiondisabled,
 .mydp .btnpickerdisabled,
 .mydp .btncleardisabled,
 .mydp .btndecreasedisabled,
-.mydp .btnincreasedisabled,
-.mydp .headertodaybtndisabled,
-.mydp .headerbtndisabled,
-.mydp .yearchangebtndisabled {
+.mydp .btnincreasedisabled {
     cursor: not-allowed;
     opacity: 0.65;
 }
@@ -206,41 +131,170 @@
     background-color: #EEE;
 }
 
-.mydp .btnpicker,
-.mydp .btnclear,
-.mydp .btndecrease,
-.mydp .btnincrease,
-.mydp .headertodaybtn {
+.mydp button::-moz-focus-inner {
+    border: 0;
+}
+
+.mydp .btnpickerenabled:hover,
+.mydp .btnclearenabled:hover,
+.mydp .btndecreaseenabled:hover,
+.mydp .btnincreaseenabled:hover {
+    background-color: #E6E6E6;
+}
+
+/* -------------------------------------------- */
+/* SELECTOR ----------------------------------- */
+/* -------------------------------------------- */
+.selector.my-custom-dp {
+    margin-top: 2px;
+    margin-left: -1px;
+    max-width: 250px;
+    position: absolute;
+    padding: 0;
+    border: 1px solid #CCC;
+    z-index: 100;
+    animation: selectorfadein 0.1s;
+}
+
+.selector.my-custom-dp,
+.headertodaybtn {
+    border-radius: 4px;
+}
+
+
+.selector.my-custom-dp:focus {
+    border: 1px solid #ADD8E6;
+    outline: none;
+}
+
+
+.my-custom-dp .header {
+    border-radius: 4px 4px 0 0;
+}
+
+.my-custom-dp .caltable,
+.my-custom-dp .monthtable,
+.my-custom-dp .yeartable {
+    border-radius: 0 0 4px 4px;
+}
+
+.my-custom-dp .caltable tbody tr:nth-child(6) td:first-child,
+.my-custom-dp .monthtable tbody tr:nth-child(4) td:first-child,
+.my-custom-dp .yeartable tbody tr:nth-child(7) td:first-child {
+    border-bottom-left-radius: 4px;
+}
+
+.my-custom-dp .caltable tbody tr:nth-child(6) td:last-child,
+.my-custom-dp .monthtable tbody tr:nth-child(4) td:last-child,
+.my-custom-dp .yeartable tbody tr:nth-child(7) td:last-child {
+    border-bottom-right-radius: 4px;
+}
+
+@keyframes selectorfadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.my-custom-dp.selectorarrow {
+    background: #FAFAFA;
+    margin-top: 12px;
+    padding: 0;
+}
+
+.my-custom-dp.selectorarrow:after,
+.my-custom-dp.selectorarrow:before {
+    bottom: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+}
+
+.my-custom-dp.selectorarrow:after {
+    border-color: rgba(250, 250, 250, 0);
+    border-bottom-color: #FAFAFA;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.my-custom-dp.selectorarrow:before {
+    border-color: rgba(204, 204, 204, 0);
+    border-bottom-color: #CCC;
+    border-width: 11px;
+    margin-left: -11px;
+}
+
+.my-custom-dp.selectorarrow:focus:before {
+    border-bottom-color: #ADD8E6;
+}
+
+.my-custom-dp.selectorarrowleft:after,
+.my-custom-dp.selectorarrowleft:before {
+    left: 24px;
+}
+
+.my-custom-dp.selectorarrowright:after,
+.my-custom-dp.selectorarrowright:before {
+    left: 86%;
+}
+
+.my-custom-dp.alignselectorright {
+    right: -1px;
+}
+
+.my-custom-dp ::-ms-clear {
+    display: none;
+}
+
+.my-custom-dp .headertodaybtnenabled,
+.my-custom-dp .headerbtnenabled,
+.my-custom-dp .yearchangebtnenabled {
+    cursor: pointer;
+}
+
+.my-custom-dp .headertodaybtndisabled,
+.my-custom-dp .headerbtndisabled,
+.my-custom-dp .yearchangebtndisabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.my-custom-dp .headertodaybtn {
     background: #FFF;
 }
 
-.mydp .header {
+.my-custom-dp .header {
     width: 100%;
     height: 30px;
     background-color: #FAFAFA;
 }
 
-.mydp .header td {
+.my-custom-dp .header td {
     vertical-align: middle;
     border: none;
     line-height: 0;
 }
 
-.mydp .header td:nth-child(1) {
+.my-custom-dp .header td:nth-child(1) {
     padding-left: 4px;
 }
 
-.mydp .header td:nth-child(2) {
+.my-custom-dp .header td:nth-child(2) {
     text-align: center;
 }
 
-.mydp .header td:nth-child(3) {
+.my-custom-dp .header td:nth-child(3) {
     padding-right: 4px;
 }
 
-.mydp .caltable,
-.mydp .monthtable,
-.mydp .yeartable {
+.my-custom-dp .caltable,
+.my-custom-dp .monthtable,
+.my-custom-dp .yeartable {
     table-layout: fixed;
     width: 100%;
     height: calc(100% - 30px);
@@ -248,27 +302,27 @@
     font-size: 14px;
 }
 
-.mydp .caltable,
-.mydp .monthtable,
-.mydp .yeartable,
-.mydp .weekdaytitle,
-.mydp .daycell,
-.mydp .monthcell,
-.mydp .yearcell {
+.my-custom-dp .caltable,
+.my-custom-dp .monthtable,
+.my-custom-dp .yeartable,
+.my-custom-dp .weekdaytitle,
+.my-custom-dp .daycell,
+.my-custom-dp .monthcell,
+.my-custom-dp .yearcell {
     border-collapse: collapse;
     color: #003366;
     line-height: 1.1;
 }
 
-.mydp .weekdaytitle,
-.mydp .daycell,
-.mydp .monthcell,
-.mydp .yearcell {
+.my-custom-dp .weekdaytitle,
+.my-custom-dp .daycell,
+.my-custom-dp .monthcell,
+.my-custom-dp .yearcell {
     padding: 4px;
     text-align: center;
 }
 
-.mydp .weekdaytitle {
+.my-custom-dp .weekdaytitle {
     background-color: #DDD;
     font-size: 11px;
     font-weight: normal;
@@ -278,135 +332,130 @@
     white-space: nowrap;
 }
 
-.mydp .weekdaytitleweeknbr {
+.my-custom-dp .weekdaytitleweeknbr {
     width: 20px;
     border-right: 1px solid #BBB;
 }
 
-.mydp .monthcell {
+.my-custom-dp .monthcell {
     background-color: #FAFAFA;
     overflow: hidden;
     white-space: nowrap;
 }
 
-.mydp .yearcell {
+.my-custom-dp .yearcell {
     background-color: #FAFAFA;
     width: 20%;
 }
 
-.mydp .daycell .datevalue {
+.my-custom-dp .daycell .datevalue {
     background-color: inherit;
     vertical-align: middle;
 }
 
-.mydp .daycell .datevalue span {
+.my-custom-dp .daycell .datevalue span {
     vertical-align: middle;
 }
 
-.mydp .daycellweeknbr {
+.my-custom-dp .daycellweeknbr {
     font-size: 10px;
     border-right: 1px solid #CCC;
     cursor: default;
     color: #000;
 }
 
-.mydp .inlinedp {
+.my-custom-dp.inlinedp {
     position: relative;
     margin-top: -1px;
 }
 
-.mydp .prevmonth,
-.mydp .nextmonth {
+.my-custom-dp .prevmonth,
+.my-custom-dp .nextmonth {
     color: #CCC;
 }
 
-.mydp .disabled {
+.my-custom-dp .disabled {
     cursor: default !important;
     color: #CCC;
     background: #FBEFEF;
 }
 
-.mydp .highlight {
+.my-custom-dp .highlight {
     color: #C30000;
 }
 
-.mydp .dimday {
+.my-custom-dp .dimday {
     opacity: 0.5;
 }
 
-.mydp .currmonth {
+.my-custom-dp .currmonth {
     background-color: #F6F6F6;
     font-weight: normal;
 }
 
-.mydp .markdate {
+.my-custom-dp .markdate {
     position: absolute;
     width: 4px;
     height: 4px;
     border-radius: 4px;
 }
 
-.mydp .markcurrday,
-.mydp .markcurrmonth,
-.mydp .markcurryear {
+.my-custom-dp .markcurrday,
+.my-custom-dp .markcurrmonth,
+.my-custom-dp .markcurryear {
     text-decoration: underline;
 }
 
-.mydp .selectedday .datevalue,
-.mydp .selectedmonth .monthvalue,
-.mydp .selectedyear .yearvalue {
+.my-custom-dp .selectedday .datevalue,
+.my-custom-dp .selectedmonth .monthvalue,
+.my-custom-dp .selectedyear .yearvalue {
     border: none;
     background-color: #8EBFFF;
     border-radius: 2px;
 }
 
-.mydp .headerbtncell {
+.my-custom-dp .headerbtncell {
     background-color: #FAFAFA;
     display: table-cell;
     vertical-align: middle;
 }
 
-.mydp .yearchangebtncell {
+.my-custom-dp .yearchangebtncell {
     text-align: center;
     background-color: #FAFAFA;
 }
 
-.mydp .headerbtn,
-.mydp .headerlabelbtn,
-.mydp .yearchangebtn {
+.my-custom-dp .headerbtn,
+.my-custom-dp .headerlabelbtn,
+.my-custom-dp .yearchangebtn {
     background: #FAFAFA;
     border: none;
     height: 22px;
 }
 
-.mydp .headerbtn {
+.my-custom-dp .headerbtn {
     width: 16px;
 }
 
-.mydp .headerlabelbtn {
+.my-custom-dp .headerlabelbtn {
     font-size: 14px;
     outline: none;
     cursor: default;
 }
 
-.mydp,
-.mydp .headertodaybtn {
+.my-custom-dp .headertodaybtn {
     border: 1px solid #CCC;
 }
 
-.mydp .btnpicker,
-.mydp .btnclear,
-.mydp .btndecrease,
-.mydp .btnincrease,
-.mydp .headerbtn,
-.mydp .headermonthtxt,
-.mydp .headeryeartxt,
-.mydp .headertodaybtn,
-.mydp .yearchangebtn {
+.my-custom-dp .headerbtn,
+.my-custom-dp .headermonthtxt,
+.my-custom-dp .headeryeartxt,
+.my-custom-dp .headertodaybtn,
+.my-custom-dp .yearchangebtn {
     color: #000;
 }
 
-.mydp .headertodaybtn {
+.my-custom-dp .headertodaybtn {
     padding: 0 4px;
     font-size: 11px;
     height: 22px;
@@ -416,12 +465,12 @@
     white-space: nowrap;
 }
 
-.mydp button::-moz-focus-inner {
+.my-custom-dp button::-moz-focus-inner {
     border: 0;
 }
 
-.mydp .headermonthtxt,
-.mydp .headeryeartxt {
+.my-custom-dp .headermonthtxt,
+.my-custom-dp .headeryeartxt {
     text-align: center;
     display: table-cell;
     vertical-align: middle;
@@ -433,95 +482,91 @@
     white-space: nowrap;
 }
 
-.mydp .btnclear:focus,
-.mydp .btndecrease:focus,
-.mydp .btnincrease:focus,
-.mydp .btnpicker:focus,
-.mydp .headertodaybtn:focus {
+.my-custom-dp .headertodaybtn:focus {
     background: #ADD8E6;
 }
 
-.mydp .headerbtn:focus,
-.mydp .monthlabel:focus,
-.mydp .yearlabel:focus,
-.mydp .yearchangebtn:focus {
+.my-custom-dp .headerbtn:focus,
+.my-custom-dp .monthlabel:focus,
+.my-custom-dp .yearlabel:focus,
+.my-custom-dp .yearchangebtn:focus {
     color: #ADD8E6;
     outline: none;
 }
 
-.mydp .daycell:focus,
-.mydp .monthcell:focus,
-.mydp .yearcell:focus {
+.my-custom-dp .daycell:focus,
+.my-custom-dp .monthcell:focus,
+.my-custom-dp .yearcell:focus {
     outline: 1px solid #CCC;
 }
 
-.mydp .icon-mydpcalendar,
-.mydp .icon-mydpremove {
+.icon-mydpcalendar,
+.icon-mydpremove {
     font-size: 16px;
 }
 
-.mydp .icon-mydpleft,
-.mydp .icon-mydpright,
-.mydp .icon-mydpup,
-.mydp .icon-mydpdown {
+.icon-mydpleft,
+.icon-mydpright,
+.icon-mydpup,
+.icon-mydpdown {
     color: #222;
     font-size: 20px;
 }
 
-.mydp .btndecrease .icon-mydpleft,
-.mydp .btnincrease .icon-mydpright {
+.icon-mydpleft,
+.icon-mydpright {
     font-size: 16px;
 }
 
-.mydp .icon-mydptoday {
+.icon-mydptoday {
     color: #222;
     font-size: 11px;
 }
 
-.mydp table {
+.my-custom-dp table {
     display: table;
     border-spacing: 0;
 }
 
-.mydp table td {
+.my-custom-dp table td {
     padding: 0;
 }
 
-.mydp table,
-.mydp th,
-.mydp td {
+.my-custom-dp table,
+.my-custom-dp th,
+.my-custom-dp td {
     border: none;
 }
 
-.mydp .btnpickerenabled:hover,
-.mydp .btnclearenabled:hover,
-.mydp .btndecreaseenabled:hover,
-.mydp .btnincreaseenabled:hover,
-.mydp .headertodaybtnenabled:hover {
+.my-custom-dp .headertodaybtnenabled:hover {
     background-color: #E6E6E6;
 }
 
-.mydp .tablesingleday:hover,
-.mydp .tablesinglemonth:hover,
-.mydp .tablesingleyear:hover {
+.my-custom-dp .tablesingleday:hover,
+.my-custom-dp .tablesinglemonth:hover,
+.my-custom-dp .tablesingleyear:hover {
     background-color: #DDD;
 }
 
-.mydp .monthlabel,
-.mydp .yearlabel,
-.mydp .inputnoteditable,
-.mydp .daycell,
-.mydp .monthcell,
-.mydp .yearcell {
+.my-custom-dp .monthlabel,
+.my-custom-dp  .yearlabel,
+.my-custom-dp  .inputnoteditable,
+.my-custom-dp  .daycell,
+.my-custom-dp  .monthcell,
+.my-custom-dp  .yearcell {
     cursor: pointer;
 }
 
-.mydp .headerbtnenabled:hover,
-.mydp .yearchangebtnenabled:hover,
-.mydp .monthlabel:hover,
-.mydp .yearlabel:hover {
+.my-custom-dp .headerbtnenabled:hover,
+.my-custom-dp .yearchangebtnenabled:hover,
+.my-custom-dp .monthlabel:hover,
+.my-custom-dp .yearlabel:hover {
     color: #777;
 }
+
+/* -------------------------------------------- */
+/* FONT --------------------------------------- */
+/* -------------------------------------------- */
 
 @font-face {
     font-family: 'mydatepicker';
@@ -530,7 +575,7 @@
     font-style: normal;
 }
 
-.mydp .mydpicon {
+.mydpicon {
     font-family: 'mydatepicker';
     font-style: normal;
     font-weight: normal;
@@ -540,30 +585,30 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.mydp .icon-mydpright:before {
+.icon-mydpright:before {
     content: "\e800";
 }
 
-.mydp .icon-mydpleft:before {
+.icon-mydpleft:before {
     content: "\e801";
 }
 
-.mydp .icon-mydptoday:before {
+.icon-mydptoday:before {
     content: "\e802";
 }
 
-.mydp .icon-mydpcalendar:before {
+.icon-mydpcalendar:before {
     content: "\e803";
 }
 
-.mydp .icon-mydpup:before {
+.icon-mydpup:before {
     content: "\e804";
 }
 
-.mydp .icon-mydpdown:before {
+.icon-mydpdown:before {
     content: "\e805";
 }
 
-.mydp .icon-mydpremove:before {
+.icon-mydpremove:before {
     content: "\e806";
 }

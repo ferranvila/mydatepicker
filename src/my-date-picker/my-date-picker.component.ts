@@ -51,6 +51,7 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
     @Output() inputFocusBlur: EventEmitter<IMyInputFocusBlur> = new EventEmitter<IMyInputFocusBlur>();
     @ViewChild("selectorEl") selectorEl: ElementRef;
     @ViewChild("inputBoxEl") inputBoxEl: ElementRef;
+    @ViewChild("selectionGroupEl") selectionGroupEl: ElementRef;
 
     onChangeCb: (_: any) => void = () => { };
     onTouchedCb: () => void = () => { };
@@ -143,7 +144,11 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
     constructor(public elem: ElementRef, private renderer: Renderer, private cdr: ChangeDetectorRef, private localeService: LocaleService, private utilService: UtilService) {
         this.setLocaleOptions();
         renderer.listenGlobal("document", "click", (event: any) => {
-            if (this.showSelector && event.target && this.elem.nativeElement !== event.target && !this.elem.nativeElement.contains(event.target)) {
+            if (this.showSelector && event.target && this.selectorEl && this.selectionGroupEl &&
+                this.elem.nativeElement !== event.target && 
+                !this.selectorEl.nativeElement.contains(event.target) &&
+                !this.selectionGroupEl.nativeElement.contains(event.target)) {
+
                 this.showSelector = false;
                 this.calendarToggle.emit(CalToggle.CloseByOutClick);
             }
@@ -475,6 +480,9 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
         this.cdr.detectChanges();
         if (this.showSelector) {
             this.openSelector(CalToggle.Open);
+            document.querySelector("body").appendChild(this.selectorEl.nativeElement);
+            let inputBounding = this.inputBoxEl.nativeElement.getBoundingClientRect();
+            this.selectorEl.nativeElement.style = `position: absolute; top: ${inputBounding.top + inputBounding.height}px; left: ${inputBounding.left}px`;
         }
         else {
             this.closeSelector(CalToggle.CloseByCalBtn);
